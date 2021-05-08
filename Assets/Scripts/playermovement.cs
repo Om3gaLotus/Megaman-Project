@@ -16,6 +16,10 @@ public class playermovement : MonoBehaviour
     public Transform groundCheck;
     public float groundCheckRadius;
 
+    public int score = 0;
+    public int lives = 3;
+
+    bool coroutineRunning;
     // Start is called before the first frame update
     void Start()
     {
@@ -75,6 +79,40 @@ public class playermovement : MonoBehaviour
 
         if (megaSprite.flipX && horizontalInput > 0 || !megaSprite.flipX && horizontalInput < 0)
             megaSprite.flipX = !megaSprite.flipX;
+
+    }
+
+     public void StartJumpForceChange()
+    {
+        if (!coroutineRunning)
+        {
+            StartCoroutine(JumpForceChange());
+        }
+        else
+        {
+            StopCoroutine(JumpForceChange());
+            StartCoroutine(JumpForceChange());
+
+        }    
+     }
+
+    IEnumerator JumpForceChange()
+    {
+        coroutineRunning = true;
+        jumpForce = 600;
+        yield return new WaitForSeconds(10.0f);
+        jumpForce = 300;
+        coroutineRunning = false;
+    }
+
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "fall")
+        {
+            Destroy(gameObject);
+        }
 
     }
 }

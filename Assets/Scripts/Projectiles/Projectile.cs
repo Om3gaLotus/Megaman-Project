@@ -25,7 +25,7 @@ public class Projectile: MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if(col.gameObject.tag == "LevelB")
+        if(col.gameObject.tag != "Player" || col.gameObject.tag != "pickup")
         {
             Destroy(gameObject);
             Debug.Log("you got it");

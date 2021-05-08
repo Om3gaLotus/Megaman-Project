@@ -319,13 +319,13 @@ TextureImporter:
     second: enemies_104
   - first:
       213: -3195840801307323683
-    second: enemies_105
+    second: roller1
   - first:
       213: 1692377922297922022
-    second: enemies_106
+    second: roller2
   - first:
       213: 1251946097893274789
-    second: enemies_107
+    second: roller3
   - first:
       213: 8402180831853084606
     second: enemies_108
@@ -2731,7 +2731,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: enemies_105
+      name: roller1
       rect:
         serializedVersion: 2
         x: 4
@@ -2752,7 +2752,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: enemies_106
+      name: roller2
       rect:
         serializedVersion: 2
         x: 55
@@ -2773,7 +2773,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: enemies_107
+      name: roller3
       rect:
         serializedVersion: 2
         x: 105
