@@ -9,6 +9,7 @@ public class EnemyTurret : MonoBehaviour
     Transform Player;
     private  float attackdistance = 10;
     public Transform projectileSpawnPoint;
+    public Transform projectileSpawnPointR;
     public Projectile projectilePrefab;
     
     SpriteRenderer turretidle;
@@ -48,7 +49,14 @@ public class EnemyTurret : MonoBehaviour
 
     void Update()
     {
-        
+        if (Player.position.x > transform.position.x)
+        {
+            turretidle.flipX = true;
+        }
+        if (Player.position.x < transform.position.x)
+        {
+            turretidle.flipX = false;
+        }
 
         if (Time.time >= timeSinceLastFire + projectileFireRate)
         {
@@ -60,10 +68,18 @@ public class EnemyTurret : MonoBehaviour
     {
         float distance = Vector3.Distance(Player.position, transform.position);
 
-        if (distance <= attackdistance )
+        if (distance <= attackdistance)
         {
-            Projectile temp = Instantiate(projectilePrefab, projectileSpawnPoint.position, projectileSpawnPoint.rotation);
-            temp.speed = -50;
+            if (turretidle.flipX == false)
+            {
+                Projectile temp = Instantiate(projectilePrefab, projectileSpawnPoint.position, projectileSpawnPoint.rotation);
+                temp.speed = -50;
+            }
+            if (turretidle.flipX == true)
+            {
+                Projectile temp = Instantiate(projectilePrefab, projectileSpawnPointR.position, projectileSpawnPointR.rotation);
+                temp.speed = 50;
+            }
 
         }
 
