@@ -7,6 +7,8 @@ TagManager:
   - LevelB
   - pickup
   - fall
+  - PlayerProjectile
+  - EnemyProjectile
   layers:
   - Default
   - TransparentFX

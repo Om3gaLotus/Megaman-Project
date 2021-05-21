@@ -214,25 +214,25 @@ TextureImporter:
     second: enemies_69
   - first:
       213: -7994189068178414372
-    second: enemies_70
+    second: turretidle
   - first:
       213: 2093997543474720784
-    second: enemies_71
+    second: turretidle2
   - first:
       213: 8570748866575639986
-    second: enemies_72
+    second: turretidle3
   - first:
       213: -8957942764683618044
-    second: enemies_73
+    second: turretidle4
   - first:
       213: -5009223088708221049
-    second: enemies_74
+    second: turretattack
   - first:
       213: -2627461283470291371
     second: enemies_75
   - first:
       213: -2141655034026178820
-    second: enemies_76
+    second: enemyProjectile
   - first:
       213: 4765978214589784494
     second: enemies_77
@@ -1996,7 +1996,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: enemies_70
+      name: turretidle
       rect:
         serializedVersion: 2
         x: 1
@@ -2017,7 +2017,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: enemies_71
+      name: turretidle2
       rect:
         serializedVersion: 2
         x: 51
@@ -2038,7 +2038,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: enemies_72
+      name: turretidle3
       rect:
         serializedVersion: 2
         x: 101
@@ -2059,7 +2059,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: enemies_73
+      name: turretidle4
       rect:
         serializedVersion: 2
         x: 151
@@ -2080,7 +2080,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: enemies_74
+      name: turretattack
       rect:
         serializedVersion: 2
         x: 201
@@ -2122,7 +2122,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: enemies_76
+      name: enemyProjectile
       rect:
         serializedVersion: 2
         x: 313

@@ -5,7 +5,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637542225115735420
+      ticks: 637572244153643519
     m_Hash: 2204306383
   m_LockFileStatus:
     m_FilePath: C:/Users/Extreme PC/Documents/GitHub/Megaman/Megaman-Project/Packages/packages-lock.json
@@ -13,7 +13,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637542225265389037
+      ticks: 637572244153803563
     m_Hash: 3394294237
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}

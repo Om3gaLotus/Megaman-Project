@@ -52,6 +52,9 @@ public class playermovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        
+
         if(Input.GetButton("Fire1"))
         {
             anim.SetBool("isAttacking", true);
