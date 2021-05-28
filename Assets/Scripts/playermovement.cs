@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(Animator), typeof(SpriteRenderer))]
 public class playermovement : MonoBehaviour
@@ -15,7 +16,7 @@ public class playermovement : MonoBehaviour
     public LayerMask isGroundLayer;
     public Transform groundCheck;
     public float groundCheckRadius;
-
+    private Transform Respawn;
     public int score = 0;
     public int lives = 3;
 
@@ -26,6 +27,7 @@ public class playermovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         megaSprite = GetComponent<SpriteRenderer>();
+        Respawn = GameObject.FindGameObjectWithTag("Respawn").transform;
 
         if (speed <= 0)
         {
@@ -83,6 +85,9 @@ public class playermovement : MonoBehaviour
         if (megaSprite.flipX && horizontalInput > 0 || !megaSprite.flipX && horizontalInput < 0)
             megaSprite.flipX = !megaSprite.flipX;
 
+        if (lives <= 0)
+            SceneManager.LoadScene(2);
+
     }
 
      public void StartJumpForceChange()
@@ -114,7 +119,20 @@ public class playermovement : MonoBehaviour
     {
         if (collision.gameObject.tag == "fall")
         {
-            Destroy(gameObject);
+            lives--;
+            transform.position = Respawn.position;
+        }
+
+        if (collision.gameObject.tag == "EnemyProjectile")
+        {
+           lives--;
+            transform.position = Respawn.position;
+        }
+
+        if (collision.gameObject.tag == "Enemy")
+        {
+            lives--;
+            transform.position = Respawn.position;
         }
 
     }

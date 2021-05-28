@@ -9,6 +9,8 @@ TagManager:
   - fall
   - PlayerProjectile
   - EnemyProjectile
+  - RespawnPoint
+  - Enemy
   layers:
   - Default
   - TransparentFX

@@ -10,6 +10,7 @@ public class patrolpath : MonoBehaviour
     private bool movingRight = true;
 
     public Transform groundDetection;
+    public int health;
 
 
     void Start()
@@ -30,6 +31,18 @@ public class patrolpath : MonoBehaviour
             }else{
                 transform.eulerAngles = new Vector3(0, 0, 0);
                 movingRight = true;
+            }
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "PlayerProjectile")
+        {
+            health--;
+            Destroy(collision.gameObject);
+            if (health <= 0)
+            {
+                Destroy(gameObject);
             }
         }
     }
