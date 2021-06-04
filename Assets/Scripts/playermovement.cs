@@ -24,6 +24,8 @@ public class playermovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         megaSprite = GetComponent<SpriteRenderer>();
@@ -51,13 +53,12 @@ public class playermovement : MonoBehaviour
 
     }
    
-    // Update is called once per frame
     void Update()
     {
 
-        
+       
 
-        if(Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1"))
         {
             anim.SetBool("isAttacking", true);
         }
@@ -87,6 +88,8 @@ public class playermovement : MonoBehaviour
 
         if (lives <= 0)
             SceneManager.LoadScene(2);
+
+    
 
     }
 
@@ -136,4 +139,5 @@ public class playermovement : MonoBehaviour
         }
 
     }
+
 }
