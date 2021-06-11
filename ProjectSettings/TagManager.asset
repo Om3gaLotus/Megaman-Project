@@ -11,6 +11,9 @@ TagManager:
   - EnemyProjectile
   - RespawnPoint
   - Enemy
+  - Life
+  - Energy
+  - Power
   layers:
   - Default
   - TransparentFX

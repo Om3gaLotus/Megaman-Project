@@ -19,6 +19,12 @@ public class playermovement : MonoBehaviour
     private Transform Respawn;
     public int score = 0;
     public int lives = 3;
+    public AudioSource jump;
+    public AudioSource hurt;
+    public AudioSource shot;
+    public AudioSource die;
+    public AudioSource life;
+    public AudioSource power;
 
     bool coroutineRunning;
     // Start is called before the first frame update
@@ -60,6 +66,7 @@ public class playermovement : MonoBehaviour
 
         if (Input.GetButton("Fire1"))
         {
+            shot.Play();
             anim.SetBool("isAttacking", true);
         }
         else
@@ -73,8 +80,10 @@ public class playermovement : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
+            jump.Play();
             rb.velocity = Vector2.zero;
             rb.AddForce(Vector2.up * jumpForce);
+            
         }
 
         Vector2 moveDirection = new Vector2(horizontalInput * speed, rb.velocity.y);
@@ -87,10 +96,18 @@ public class playermovement : MonoBehaviour
             megaSprite.flipX = !megaSprite.flipX;
 
         if (lives <= 0)
-            SceneManager.LoadScene(2);
-
+        {
+            
+            Invoke("gameOver", 1);
+            
+        }
     
 
+    }
+
+    void gameOver()
+    {
+        SceneManager.LoadScene(2);
     }
 
      public void StartJumpForceChange()
@@ -122,22 +139,52 @@ public class playermovement : MonoBehaviour
     {
         if (collision.gameObject.tag == "fall")
         {
-            lives--;
-            transform.position = Respawn.position;
+            if (lives > 1)
+            {
+                hurt.Play();
+                lives--;
+                transform.position = Respawn.position;
+            }
+            else
+            {
+                lives--;
+                die.Play();
+            }
+            
         }
 
         if (collision.gameObject.tag == "EnemyProjectile")
-        {
-           lives--;
-            transform.position = Respawn.position;
-        }
+            if (lives > 1)
+            {
+                hurt.Play();
+                lives--;
+                transform.position = Respawn.position;
+            }
+            else
+            {
+                lives--;
+                die.Play();
+            }
+
 
         if (collision.gameObject.tag == "Enemy")
-        {
-            lives--;
-            transform.position = Respawn.position;
-        }
+            if (lives > 1)
+            {
+                hurt.Play();
+                lives--;
+                transform.position = Respawn.position;
+            }
+            else
+            {
+                lives--;
+                die.Play();
+            }
 
+        if (collision.gameObject.tag == "Power")
+        {
+            power.Play();
+        }
+        
     }
 
 }

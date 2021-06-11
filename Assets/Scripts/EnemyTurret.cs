@@ -20,6 +20,9 @@ public class EnemyTurret : MonoBehaviour
 
     float timeSinceLastFire = 0.0f;
     public int health;
+    public AudioSource fire;
+    
+
 
     Animator anim;
 
@@ -74,11 +77,13 @@ public class EnemyTurret : MonoBehaviour
             {
                 Projectile temp = Instantiate(projectilePrefab, projectileSpawnPoint.position, projectileSpawnPoint.rotation);
                 temp.speed = -50;
+                fire.Play();
             }
             if (turretidle.flipX == true)
             {
                 Projectile temp = Instantiate(projectilePrefab, projectileSpawnPointR.position, projectileSpawnPointR.rotation);
                 temp.speed = 50;
+                fire.Play();
             }
 
         }
@@ -90,20 +95,7 @@ public class EnemyTurret : MonoBehaviour
     {
         anim.SetBool("Fire", false);
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.tag == "PlayerProjectile")
-        {
-            health--;
-            Destroy(collision.gameObject);
-            if(health <= 0)
-            {
-                Destroy(gameObject);
-            }
-        }
-    }
-    
-       
+
    
 
     void OnDrawGizmosSelected()

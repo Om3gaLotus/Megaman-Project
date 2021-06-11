@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6291764074537915289}
   m_Layer: 0
   m_Name: Eball1
-  m_TagString: Untagged
+  m_TagString: Power
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
