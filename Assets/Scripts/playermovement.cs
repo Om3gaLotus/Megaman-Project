@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(Animator), typeof(SpriteRenderer))]
 public class playermovement : MonoBehaviour
@@ -13,8 +14,8 @@ public class playermovement : MonoBehaviour
     public float speed;
     public int jumpForce;
     public bool isGrounded;
-    public bool isHurt = false;
-    public bool isDead = false;
+    private bool isHurt = false;
+    private bool isDead = false;
     public LayerMask isGroundLayer;
     public Transform groundCheck;
     public float groundCheckRadius;
@@ -28,6 +29,8 @@ public class playermovement : MonoBehaviour
     public AudioSource die;
     public AudioSource life;
     public AudioSource power;
+    public Image[] healthMarker;
+    public Image[] lifeMarker;
 
     bool coroutineRunning;
     // Start is called before the first frame update
@@ -108,7 +111,32 @@ public class playermovement : MonoBehaviour
                 Invoke("gameOver", 1);
 
             }
+
+        for (int i = 0; i < healthMarker.Length; i++)
+        {
+            if (i < health)
+            {
+                healthMarker[i].enabled = false;
+            }
+            else
+            {
+                healthMarker[i].enabled = true;
+            }
+        }
         
+        for (int i = 0; i < lifeMarker.Length; i++)
+        {
+            if (i < lives)
+            {
+                lifeMarker[i].enabled = true;
+            }
+            else
+            {
+                lifeMarker[i].enabled = false;
+            }
+        }
+
+
 
     }
 
@@ -151,6 +179,7 @@ public class playermovement : MonoBehaviour
                 die.Play();
                 lives--;
                 transform.position = Respawn.position;
+                health = 5;
             }
             else
             {
@@ -171,6 +200,7 @@ public class playermovement : MonoBehaviour
                     hurt.Play();
                     lives--;
                     transform.position = Respawn.position;
+                    health = 5;
                 }
                 else
                 {
@@ -200,6 +230,7 @@ public class playermovement : MonoBehaviour
                     hurt.Play();
                     lives--;
                     transform.position = Respawn.position;
+                    health = 5;
                 }
                 else
                 {
@@ -225,5 +256,6 @@ public class playermovement : MonoBehaviour
         }
         
     }
+
 
 }

@@ -16,7 +16,7 @@ TextureImporter:
     second: Collectables_3
   - first:
       213: 3350666890990760709
-    second: Collectables_4
+    second: FullHealth
   - first:
       213: 2860087585957106871
     second: Collectables_5
@@ -1633,7 +1633,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Collectables_4
+      name: FullHealth
       rect:
         serializedVersion: 2
         x: 1808
