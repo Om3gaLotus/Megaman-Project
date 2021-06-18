@@ -37,12 +37,14 @@ public class pickup : MonoBehaviour
             {
                 case CollectibleType.COLLECTIBLE:
                    playermovement pmScript = collision.gameObject.GetComponent<playermovement>();
-                    pmScript.score++;
+                    if(pmScript.health <5)
+                    pmScript.health++;
                     Debug.Log(pmScript.score);
                     
                     break;
                 case CollectibleType.LIVES:
                     pmScript = collision.gameObject.GetComponent<playermovement>();
+                    if(pmScript.lives < 3)
                     pmScript.lives++;
                     break;
                 case CollectibleType.POWERUP:

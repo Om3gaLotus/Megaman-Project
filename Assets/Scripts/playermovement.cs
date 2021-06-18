@@ -22,7 +22,7 @@ public class playermovement : MonoBehaviour
     private Transform Respawn;
     public int score = 0;
     public int lives = 3;
-    private int health = 5;
+    public int health = 5;
     public AudioSource jump;
     public AudioSource hurt;
     public AudioSource shot;
@@ -162,8 +162,8 @@ public class playermovement : MonoBehaviour
     IEnumerator JumpForceChange()
     {
         coroutineRunning = true;
-        jumpForce = 600;
-        yield return new WaitForSeconds(10.0f);
+        jumpForce = 450;
+        yield return new WaitForSeconds(5.0f);
         jumpForce = 300;
         coroutineRunning = false;
     }

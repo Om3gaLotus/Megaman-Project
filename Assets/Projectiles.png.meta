@@ -82,13 +82,13 @@ TextureImporter:
     second: Projectiles_25
   - first:
       213: 3901950792775414541
-    second: Projectiles_26
+    second: chargeshot1
   - first:
       213: -8092923757046829498
     second: Projectiles_27
   - first:
       213: -3628530191092909164
-    second: Projectiles_28
+    second: chargeshot2
   - first:
       213: 8390740942291043251
     second: Projectiles_29
@@ -1312,15 +1312,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Projectiles_26
+      name: chargeshot1
       rect:
         serializedVersion: 2
         x: 209
         y: 586
         width: 34
         height: 34
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1354,15 +1354,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Projectiles_28
+      name: chargeshot2
       rect:
         serializedVersion: 2
         x: 284
         y: 586
         width: 42
         height: 34
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
