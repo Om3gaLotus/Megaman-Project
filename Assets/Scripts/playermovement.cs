@@ -13,12 +13,15 @@ public class playermovement : MonoBehaviour
     public float speed;
     public int jumpForce;
     public bool isGrounded;
+    public bool isHurt = false;
+    public bool isDead = false;
     public LayerMask isGroundLayer;
     public Transform groundCheck;
     public float groundCheckRadius;
     private Transform Respawn;
     public int score = 0;
     public int lives = 3;
+    private int health = 5;
     public AudioSource jump;
     public AudioSource hurt;
     public AudioSource shot;
@@ -62,46 +65,50 @@ public class playermovement : MonoBehaviour
     void Update()
     {
 
-       
 
-        if (Input.GetButton("Fire1"))
-        {
-            shot.Play();
-            anim.SetBool("isAttacking", true);
-        }
-        else
-        {
+        
 
-            anim.SetBool("isAttacking", false);
-        }
+            if (Input.GetButton("Fire1"))
+            {
+                shot.Play();
+                anim.SetBool("isAttacking", true);
+            }
+            else
+            {
 
-        float horizontalInput = Input.GetAxisRaw("Horizontal");
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, isGroundLayer);
+                anim.SetBool("isAttacking", false);
+            }
 
-        if (Input.GetButtonDown("Jump") && isGrounded)
-        {
-            jump.Play();
-            rb.velocity = Vector2.zero;
-            rb.AddForce(Vector2.up * jumpForce);
-            
-        }
 
-        Vector2 moveDirection = new Vector2(horizontalInput * speed, rb.velocity.y);
-        rb.velocity = moveDirection;
+            float horizontalInput = Input.GetAxisRaw("Horizontal");
+            isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, isGroundLayer);
 
-        anim.SetFloat("speed", Mathf.Abs(horizontalInput));
-        anim.SetBool("isGrounded", isGrounded);
+            if (Input.GetButtonDown("Jump") && isGrounded)
+            {
+                jump.Play();
+                rb.velocity = Vector2.zero;
+                rb.AddForce(Vector2.up * jumpForce);
 
-        if (megaSprite.flipX && horizontalInput > 0 || !megaSprite.flipX && horizontalInput < 0)
-            megaSprite.flipX = !megaSprite.flipX;
+            }
 
-        if (lives <= 0)
-        {
-            
-            Invoke("gameOver", 1);
-            
-        }
-    
+            Vector2 moveDirection = new Vector2(horizontalInput * speed, rb.velocity.y);
+            rb.velocity = moveDirection;
+
+
+            anim.SetFloat("speed", Mathf.Abs(horizontalInput));
+            anim.SetBool("isGrounded", isGrounded);
+
+            if (megaSprite.flipX && horizontalInput > 0 || !megaSprite.flipX && horizontalInput < 0)
+                megaSprite.flipX = !megaSprite.flipX;
+
+
+            if (lives <= 0)
+            {
+
+                Invoke("gameOver", 1);
+
+            }
+        
 
     }
 
@@ -135,18 +142,19 @@ public class playermovement : MonoBehaviour
 
 
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private IEnumerator OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "fall")
         {
             if (lives > 1)
             {
-                hurt.Play();
+                die.Play();
                 lives--;
                 transform.position = Respawn.position;
             }
             else
             {
+                anim.SetBool("isDead", true);
                 lives--;
                 die.Play();
             }
@@ -154,30 +162,61 @@ public class playermovement : MonoBehaviour
         }
 
         if (collision.gameObject.tag == "EnemyProjectile")
-            if (lives > 1)
+
+
+            if (health <= 1)
             {
-                hurt.Play();
-                lives--;
-                transform.position = Respawn.position;
+                if (lives > 1)
+                {
+                    hurt.Play();
+                    lives--;
+                    transform.position = Respawn.position;
+                }
+                else
+                {
+                    anim.SetBool("isDead", true);
+                    lives--;
+                    die.Play();
+                }
             }
             else
             {
-                lives--;
-                die.Play();
+                isHurt = true;
+                anim.SetBool("isHurt", true);
+                health--;
+                hurt.Play();
+                yield return new WaitForSeconds(0.1f);
+                anim.SetBool("isHurt", false);
+                isHurt = false;
             }
-
 
         if (collision.gameObject.tag == "Enemy")
-            if (lives > 1)
+
+            if (health <= 1)
             {
-                hurt.Play();
-                lives--;
-                transform.position = Respawn.position;
+
+                if (lives > 1)
+                {
+                    hurt.Play();
+                    lives--;
+                    transform.position = Respawn.position;
+                }
+                else
+                {
+                    anim.SetBool("isDead", true);
+                    lives--;
+                    die.Play();
+                }
             }
-            else
+        else
             {
-                lives--;
-                die.Play();
+                isHurt = true;
+                anim.SetBool("isHurt", true);
+                hurt.Play();
+                health--;
+                yield return new WaitForSeconds(0.1f);
+                anim.SetBool("isHurt", false);
+                isHurt = false;
             }
 
         if (collision.gameObject.tag == "Power")

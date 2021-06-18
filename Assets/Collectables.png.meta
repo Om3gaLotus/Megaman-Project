@@ -22,7 +22,7 @@ TextureImporter:
     second: Collectables_5
   - first:
       213: 9069713878209895214
-    second: Collectables_6
+    second: healthT
   - first:
       213: 1352234871116111741
     second: Collectables_7
@@ -133,7 +133,7 @@ TextureImporter:
     second: Collectables_42
   - first:
       213: -6665333786726430419
-    second: Collectables_43
+    second: healthEmpty
   - first:
       213: 5766567751950931478
     second: Collectables_44
@@ -265,7 +265,7 @@ TextureImporter:
     second: Collectables_86
   - first:
       213: -2778230824649688197
-    second: Collectables_87
+    second: HealthFull
   - first:
       213: 2144773329113201229
     second: Collectables_88
@@ -376,7 +376,7 @@ TextureImporter:
     second: Collectables_123
   - first:
       213: -3265525970227909403
-    second: Collectables_124
+    second: healthB
   - first:
       213: 1352095867878205934
     second: Collectables_125
@@ -1675,7 +1675,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Collectables_6
+      name: healthT
       rect:
         serializedVersion: 2
         x: 5
@@ -2452,7 +2452,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Collectables_43
+      name: healthEmpty
       rect:
         serializedVersion: 2
         x: 5
@@ -3376,7 +3376,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Collectables_87
+      name: HealthFull
       rect:
         serializedVersion: 2
         x: 5
@@ -4153,7 +4153,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Collectables_124
+      name: healthB
       rect:
         serializedVersion: 2
         x: 5

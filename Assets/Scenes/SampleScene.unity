@@ -3695,6 +3695,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 607859698}
     - target: {fileID: 420281352572169954, guid: 9037fc797917aa04ead21581dc9b89df, type: 3}
+      propertyPath: isDead
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 420281352572169954, guid: 9037fc797917aa04ead21581dc9b89df, type: 3}
       propertyPath: Respawn
       value: 
       objectReference: {fileID: 1746644855}
